@@ -32,7 +32,7 @@ define("mpage","menupages/");
     <link href="<?=siteUrl?>assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="<?=siteUrl?>assets/css/custom.min.css" rel="stylesheet" type="text/css" />
-
+    <link href="<?=siteUrl?>assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -59,15 +59,16 @@ define("mpage","menupages/");
     </div>
 
     <!-- JAVASCRIPT -->
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <!-- JAVASCRIPT -->
     <script src="<?=siteUrl?>assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?=siteUrl?>assets/libs/simplebar/simplebar.min.js"></script>
     <script src="<?=siteUrl?>assets/libs/node-waves/waves.min.js"></script>
     <script src="<?=siteUrl?>assets/libs/feather-icons/feather.min.js"></script>
     <script src="<?=siteUrl?>assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
     <script src="<?=siteUrl?>assets/js/plugins.js"></script>
-    <script src="<?=siteUrl?>assets/libs/prismjs/prism.js"></script>
-    <!-- App js -->
-    <script src="<?=siteUrl?>assets/js/app.js"></script>
+
+    <!-- apexcharts -->
     <script src="<?=siteUrl?>assets/libs/apexcharts/apexcharts.min.js"></script>
 
     <!-- Vector map-->
@@ -82,12 +83,37 @@ define("mpage","menupages/");
 
     <!-- App js -->
     <script src="<?=siteUrl?>assets/js/app.js"></script>
-    
-    <!-- Modern colorpicker bundle -->
-    <script src="<?=siteUrl?>assets/libs/@simonwep/pickr/pickr.min.js"></script>
+    <!-- prismjs plugin -->
+    <script src="<?=siteUrl?>assets/libs/prismjs/prism.js"></script>
+    <script src="<?=siteUrl?>assets/libs/list.js/list.min.js"></script>
+    <script src="<?=siteUrl?>assets/libs/list.pagination.js/list.pagination.min.js"></script>
 
+    <!-- listjs init -->
+    <script src="<?=siteUrl?>assets/js/pages/listjs.init.js"></script>
+
+    <!-- Sweet Alerts js -->
+    <script src="<?=siteUrl?>assets/libs/sweetalert2/sweetalert2.min.js"></script>
     <!-- init js -->
     <script src="<?=siteUrl?>assets/js/pages/form-pickers.init.js"></script>
+    <script type="text/javascript">
+        function kullaniciSil(id){
+            $.ajax({
+                url:"../system/ajax/delete.php",
+                method:"POST",
+                data:{"id":id},
+                success:function (response) {
+                    alert(response);
+                    window.location.reload(true);
+                },
+                error:function (response) {
+                    alert(response);
+                }
+            })
+        }
+
+        
+
+    </script>
 </body>
 
 </html>

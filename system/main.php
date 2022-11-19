@@ -25,4 +25,13 @@ $siteBaslik = $siteAyar[0] -> title;
 /** Site Ayarları Son */
 
 
+
+
+/** Ajax */
+
+
+/** Ajax */
+
+
+
 ?>

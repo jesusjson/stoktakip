@@ -1,40 +1,5 @@
 <?php
 /**
- * session veri
- * 
- */
-
-/**
- * Input keys
- * kadi, sifre,sifreTekrar,mail
- * 
- * girisButton
- * kayitButton
- * 
- * 
- */
-
-/**
- * Message Keys
- * 
- * basariliGiris, basarisizGiris, basariliKayit, basarisizKayit, mevcutMail, mevcutKadi, gecersizMail, bosAlan ,sifreUyusmama
- * 
- */
-/**
- * Tablo / Sutun Keys
- * tablo
- * kadi, sifre,mail
- * 
- */
-
-/**
- * Yonlendir keys
- * girisSayfa
- * index
- * 
- */
-
-/**
  * 
  * Mitat
  * 

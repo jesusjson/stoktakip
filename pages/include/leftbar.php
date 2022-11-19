@@ -20,7 +20,7 @@
             <div id="two-column-menu">
             </div>
             <ul class="navbar-nav" id="navbar-nav">
-                <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                <li class="menu-title"><span data-key="t-menu">Yetkili</span></li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                         <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">Personel İşlemleri</span>
@@ -30,7 +30,9 @@
                             <li class="nav-item">
                                 <a href="<?=siteUrl?>pages/index.php?kategori=personelekle" class="nav-link" data-key="t-analytics">Personel Ekle </a>
                             </li>
-                            
+                            <li class="nav-item">
+                                <a href="<?=siteUrl?>pages/index.php?kategori=personeller" class="nav-link" data-key="t-analytics">Personel Listesi </a>
+                            </li>
                         </ul>
                     </div>
                 </li> <!-- end Dashboard Menu -->
