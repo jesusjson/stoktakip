@@ -39,8 +39,63 @@
                                     use iplikciNedim\rıfkı\rıfkı;
 
                                     $personelCek = rıfkı::table('users') -> get();
+                                    if($personelCek){
+
+                                    
                                     foreach($personelCek as $p){
-                                ?>
+                                ?>      
+                                        <!-- Duzenle Modals -->
+                                        <div id="kullaniciDuzenleModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="myModalLabel">Personel Düzenle</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form method="POST" class="row g-3">
+                                                            <div class="col-md-12">
+                                                                <label for="fullnameInput" class="form-label">Tc Kimlik</label>
+                                                                <input type="text" value="<?=$p -> tc?>" name="editTc" class="form-control" id="personelKayitTc" placeholder="Lütfen Personelin Tc Kimlik Numarasını giriniz">
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="fullnameInput" class="form-label">Adı Soyadı</label>
+                                                                <input type="text" value="<?=$p -> nameSurname?>" name="editName" class="form-control" id="editName" placeholder="Lütfen Personelin Adını ve Soyadını giriniz">
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="inputEmail4" class="form-label">Email</label>
+                                                                <input name="kayitEmail" value="<?=$p -> email?>" type="email" class="form-control" id="editMail" placeholder="Lütfen Personelin Email adresini giriniz">
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="inputPassword4" class="form-label">Şifre</label>
+                                                                <input type="password" name="kayitPassword" class="form-control" id="editSifre" placeholder="Lütfen Personelin Şifresini giriniz">
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="inputCity" class="form-label">Telefon</label>
+                                                                <input type="text" value="<?=$p -> phone?>" name="kayitTelefon" class="form-control" id="editPhone" placeholder="Lütfen Personelin Telefon Numarasını giriniz">
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="choices-single-no-search" class="form-label text-muted">Personel Yetki Durumu</label>
+                                                                <select selected = "0" name="editAuth" class="form-control" id="editAuth" data-choices data-choices-search-false data-choices-removeItem>
+                                                                    <option value="1">Personel</option>
+                                                                    <option value="0">Yetkili</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label for="inputZip" value="<?=$p -> salary?>" class="form-label">Maaş</label>
+                                                                <input type="text" name="kayitMaas" class="form-control" id="editSalary" placeholder="Maaş Miktarı">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">İptal</button>
+                                                        <button onclick="personalEdit(<?=$p -> id?>,document.forms[0].editTc.value, document.forms[0].editName.value, document.forms[0].editMail.value, document.forms[0].editSifre.value, document.forms[0].editPhone.value, document.forms[0].editAuth.value, document.forms[0].editSalary.value)" type="button" class="btn btn-primary ">Save Changes</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--- Duzenle Modals End-->
                                         <tr>
                                             <th scope="row"></th>
                                             
@@ -52,17 +107,17 @@
                                             <td class="date"><?=$p -> salary?></td>
                                             <td class="status"><span class="badge badge-soft-success text-uppercase"><?=($p -> userAuth == 0) ? "Yetkili" : "Personel";?></span></td>
                                             <td>
-                                                <div class="d-flex gap-2">
+                                                <div class="d-flex gap-2 justify-content-sm-center">
                                                     <div class="edit">
-                                                        <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal">Düzenle</button>
+                                                        <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#kullaniciDuzenleModal">Düzenle</button>
                                                     </div>
                                                     <div class="remove">
-                                                        <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Kaldır</button>
+                                                        <button class="btn btn-sm btn-danger remove-item-btn" onclick="personalDelete(<?=$p -> id?>)">Kaldır</button>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
-                                    <?php } ?>
+                                    <?php } }?>
                                 </tbody>
                             </table>
                             <div class="noresult" style="display: none">
@@ -90,4 +145,10 @@
             </div>
         </div>
     </div>
+  
+
+
+
 </div>
+
+

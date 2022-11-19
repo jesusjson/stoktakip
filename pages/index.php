@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 ob_start();
 define("sys","../system/");
@@ -6,6 +6,8 @@ define("inc","include/");
 include_once(sys."main.php");
 define('siteUrl',$siteUrl);
 define("mpage","menupages/");
+define('siteLogo',$siteLogo);
+
 ?>
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none">
@@ -37,27 +39,29 @@ define("mpage","menupages/");
 </head>
 
 <body>
-    <div class="layout-wrapper">
-        <?=include_once(inc."header.php")?>
-        <?=include_once(inc."leftbar.php")?>
-        <div class="page-content">
 
-            <?php 
-                if($_GET && !empty($_GET['kategori'])){
-                    $sayfa = $_GET['kategori'].".php";
-                    if(file_exists(mpage.$sayfa)){
-                        include_once(mpage.$sayfa);
-                    }else{
+    <?php if($_SESSION['personalTc'] and $_SESSION['personalAd']){?>
+        <div class="layout-wrapper">
+            <?=include_once(inc."header.php")?>
+            <?=include_once(inc."leftbar.php")?>
+            <div class="page-content">
+
+                <?php 
+                    if($_GET && !empty($_GET['kategori'])){
+                        $sayfa = $_GET['kategori'].".php";
+                        if(file_exists(mpage.$sayfa)){
+                            include_once(mpage.$sayfa);
+                        }else{
+                            include_once("menupages/body.php");
+                        }
+                    }else {
                         include_once("menupages/body.php");
                     }
-                }else {
-                    include_once("menupages/body.php");
-                }
-            ?>
+                ?>
+            </div>
+            <?=include_once(inc."footer.php")?>
         </div>
-        <?=include_once(inc."footer.php")?>
-    </div>
-
+    <?php }else{header('Location: login/login.php');}?>
     <!-- JAVASCRIPT -->
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <!-- JAVASCRIPT -->
@@ -111,6 +115,35 @@ define("mpage","menupages/");
             })
         }
 
+        function personalDelete(id){
+            $.ajax({
+                url:'../system/main.php',
+                method:"POST",
+                data:{'personelDeleteId':id},
+                success:function (response) {
+                    (response);
+                    window.location.reload(true);
+                },
+                error:function (response) {
+                    alert(response);
+                }
+            })
+        }
+
+        function personalEdit(id,tc,name,email,sifre,telefon,auth,maas){
+            $.ajax({
+                url:"../system/main.php",
+                method:"POST",
+                data:{'id':id,'personelDuzenleTc':tc,'name':name,'email':email,'sifre':sifre,'telefon':telefon,'auth':auth,'maas':maas},
+                success:function (response) {
+                    alert(response);
+                    window.location.reload(true);
+                },
+                error:function (response) {
+                    alert(response);
+                }
+            })
+        }
         
 
     </script>

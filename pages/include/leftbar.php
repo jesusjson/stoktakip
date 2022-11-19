@@ -4,10 +4,10 @@
         <!-- Light Logo-->
         <a href="index.html" class="logo logo-light">
             <span class="logo-sm">
-                <img src="<?=siteUrl?>assets/images/logo-sm.png" alt="" height="22">
+                <img src="logo" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="<?=siteUrl?>assets/images/logo-light.png" alt="" height="17">
+                <img src="logo" alt="" height="17">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -29,6 +29,22 @@
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="<?=siteUrl?>pages/index.php?kategori=personelekle" class="nav-link" data-key="t-analytics">Personel Ekle </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?=siteUrl?>pages/index.php?kategori=personeller" class="nav-link" data-key="t-analytics">Personel Listesi </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li> <!-- end Dashboard Menu -->
+                <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#menu" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                        <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">Ürün İşlemleri</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="menu">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="<?=siteUrl?>pages/index.php?kategori=personelekle" class="nav-link" data-key="t-analytics">Ürün Ekle </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?=siteUrl?>pages/index.php?kategori=personeller" class="nav-link" data-key="t-analytics">Personel Listesi </a>
